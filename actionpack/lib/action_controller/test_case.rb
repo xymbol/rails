@@ -605,7 +605,7 @@ module ActionController
         end
 
         def document_root_element
-          html_document.root
+          html_document.root || html_document
         end
 
         def check_required_ivars
