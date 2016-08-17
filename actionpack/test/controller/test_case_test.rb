@@ -154,6 +154,10 @@ XML
       render html: '<body class="foo"></body>'.html_safe
     end
 
+    def test_empty_output
+      render html: ''
+    end
+
     def boom
       raise "boom!"
     end
@@ -205,6 +209,12 @@ XML
     get :test_with_body
 
     assert_select "body.foo"
+  end
+
+  def test_assert_select_with_empty_output
+    get :test_empty_output
+
+    assert_select 'body', false
   end
 
   def test_url_options_reset
